@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product{% endblock title %}
+
+{% block body %}
+
+<h1>Add New Product</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <p>name: {{form.name}}</p>
+    <p>code: {{form.code}}</p>
+    <p>cost: {{form.cost}}</p>
+    <p>selling_price: {{form.selling_price}}</p>
+    <p>unit: {{form.unit}}</p>
+
+
+    <button type="submit">Add</button>
+</form>
+
+<br>
+<a href="{% url "index" %}" class="btn btn-primary">Home</a> 
+
+<div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Code</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Selling Price</th>
+                <th scope="col">Unit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in product_data %}
+            <tr>
+                <td>{{row.name}}</td>
+                <td>{{row.code}}</td>
+                <td>{{row.cost}}</td>
+                <td>{{row.selling_price}}</td>
+                <td>{{row.unit}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock body %}

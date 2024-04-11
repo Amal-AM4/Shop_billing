@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}New Cus{% endblock title %}
+
+{% block body %}
+
+<h1>Add New Customer</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <p>name: {{form.name}}</p>
+    <p>address: {{form.address}}</p>
+    <p>phone: {{form.phone}}</p>
+    <p>email: {{form.email}}</p>
+
+
+    <button type="submit">Add</button>
+</form>
+
+<br>
+<a href="{% url "index" %}" class="btn btn-primary">Home</a> 
+
+<div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact No.</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in c_tb %}
+            <tr>
+                <td>{{row.name}}</td>
+                <td>{{row.address}}</td>
+                <td>{{row.phone}}</td>
+                <td>{{row.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock body %}
